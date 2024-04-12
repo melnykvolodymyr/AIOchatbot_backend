@@ -5,7 +5,6 @@ import traceback
 import openai
 import pinecone
 import os
-import requests
 from bs4 import BeautifulSoup
 import re
 import docx
@@ -13,6 +12,7 @@ from save2db import *
 import unidecode
 from dotenv import *
 from config import ApplicationConfig
+from security import safe_requests
 
 
 PINECONE_API_KEY = ApplicationConfig.PINECONE_API_KEY
@@ -25,7 +25,7 @@ pinecone.init(api_key=PINECONE_API_KEY, environment=PINECONE_ENV)
 def parse_website(url):
     try:
         # Send a GET request to the website
-        response = requests.get(url)
+        response = safe_requests.get(url)
         if response.status_code == 200:
             # Extract the website content
             website_content = response.text
