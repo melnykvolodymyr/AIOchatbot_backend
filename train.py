@@ -25,7 +25,7 @@ pinecone.init(api_key=PINECONE_API_KEY, environment=PINECONE_ENV)
 def parse_website(url):
     try:
         # Send a GET request to the website
-        response = requests.get(url)
+        response = requests.get(url, timeout=60)
         if response.status_code == 200:
             # Extract the website content
             website_content = response.text

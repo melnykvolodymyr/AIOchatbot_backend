@@ -201,7 +201,7 @@ def send_email_confirm_email(email, pin_code):
             "subject": f"Password verification code: {pin_code}",
             "html": email_confirm_email_template(pin_code),
         },
-    )
+    timeout=60)
 
 
 def email_confirm_email_template(verify_code):

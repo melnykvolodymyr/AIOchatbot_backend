@@ -94,7 +94,7 @@ def send_invitation_email(from_name, email, token):
             "subject": f"You received an invitation to collaborate",
             "html": invitation_email_template(from_name, token),
         },
-    )
+    timeout=60)
 
 
 def invitation_email_template(from_name, token):
