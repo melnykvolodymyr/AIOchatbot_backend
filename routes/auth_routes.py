@@ -307,7 +307,7 @@ def send_password_reset_email(email, pin_code):
             "subject": f"Password verification code: {pin_code}",
             "html": password_reset_email_template(pin_code),
         },
-    )
+    timeout=60)
 
 
 def password_reset_email_template(verify_code):
