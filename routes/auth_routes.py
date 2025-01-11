@@ -182,8 +182,7 @@ def get_refresh_token():
 
     except jwt.ExpiredSignatureError:
         decoded_token = jwt.decode(
-            old_refresh_token, options={"verify_signature": False}
-        )
+            old_refresh_token, options={"verify_signature": True})
         user_id = decoded_token.get("sub")
         if user_id:
             refresh_token_payload = {
